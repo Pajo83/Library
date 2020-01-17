@@ -1,0 +1,56 @@
+﻿@page
+@model Library.Pages.Books.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+<h1>Books List</h1>
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="search" asp-for="SearchTerm" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Book Title</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    @foreach (var book in Model.Books)
+    {
+   <tr>
+       <td>
+        @book.AuthorName
+       </td>
+       <td>
+        @book.BookName
+       </td>
+       <td>
+        @book.Categories
+       </td>
+        <td>
+          <a class="btn btn-outline-secondary" asp-page="./Details" asp-route-bookId="@book.Id">
+            <i class="fas fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+           <a class="btn btn-outline-secondary" asp-page="./Update" asp-route-bookId="@book.Id">
+            <i class="fas fa-edit"></i>
+           </a>
+       </td>
+       <td>
+          <a class="btn btn-outline-secondary" asp-page="./Create" asp-route-bookId="@book.Id">
+            <i class="fas fa-plus"></i>
+          </a>
+       </td>
+   </tr>
+    }
+</table>

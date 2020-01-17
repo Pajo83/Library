@@ -1,0 +1,29 @@
+﻿@page "{bookId:int}"
+@model Library.Pages.Books.UpdateModel
+@{
+    ViewData["Title"] = "Update";
+ }
+    
+<h2> Updating @Model.Book.AuthorName</h2>
+<form method="post">
+    <input type="hidden" asp-for="Book.Id" />
+    <div class="from-group">
+        <label asp-for="Book.AuthorName"></label>
+        <input class="from-control" asp-for="Book.AuthorName" />
+        <span class="text-danger" asp-validation-for="Book.AuthorName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.BookName"></label>
+        <input class="form-control" asp-for="Book.BookName" />
+        <span class="text-danger" asp-validation-for="Book.BookName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Categories"></label>
+
+
+        <select class="form-control" asp-for="Book.Categories" asp-items="@Model.CategoryType">
+            <option value="">Pick a Cuisine</option>
+        </select>
+        <span asp-validation-for="Book.Categories"></span>
+    </div>
+</form>
